@@ -1,0 +1,26 @@
+CELL COLOR IN ALV:
+ 
+You need an extra field in your outtab, -> give it a name "color" and its type LVC_T_SCOL.
+loop the table and populate the strucuture with the fieldname and the parameters for the color.
+example:
+ 
+DATA: ls_color      TYPE lvc_s_scol.
+    " Coloring the cells
+    LOOP AT gt_node ASSIGNING FIELD-SYMBOL(<fs_color>).
+      ls_color-fname = 'POSNV'.
+      ls_color-color-col = 5.
+      ls_color-color-int = 1.
+      ls_color-color-inv = 1.
+      APPEND ls_color TO <fs_color>-color.
+      CLEAR ls_color.
+ 
+    ENDLOOP.
+When setting table for first display, pass the name of the field in your table with the color data to the layout structure.
+ls_layout-ctab_fname = 'COLOR'.
+ 
+CALL METHOD go_alv->set_table_for_first_display
+      EXPORTING
+        is_layout            = ls_layout
+      CHANGING
+        it_outtab            = gt_node
+        it_fieldcatalog      = lt_fieldcat.
