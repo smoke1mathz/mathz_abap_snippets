@@ -3,7 +3,21 @@ code   arquivo.txt    # cria/abre no VS Code
 mkdir  pasta         # cria pasta
 
 Depois:
-
+---------------------------
+inicialmente
+---------------------------
+git init
 git add .
-git commit -m "msg"
+git commit -m "initial commit"
+
+git branch -M main
+git remote add origin URL_DO_REPO
+git push -u origin main
+Depois disso, no dia a dia:
+
+--------------------------
+dia a dia
+--------------------------
+git add .
+git commit -m "message"
 git push
