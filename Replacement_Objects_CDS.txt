@@ -1,0 +1,19 @@
+Antes de fazer um select em cds, conferir na se11 se nao tem objeto substituto.
+
+como mard e mbew, caso der um
+
+-------------------------------------------------
+define view entity ZI_MM16_STOCK_BASE
+  as select from mard
+    inner join   mara on mara.matnr = mard.matnr
+-------------------------------------------------
+
+Não irá funcionar, precisa ser
+
+-------------------------------------------------
+define view entity ZI_MM16_STOCK_BASE
+  as select from nsdm_e_mard
+    inner join   mara on mara.matnr = nsdm_e_mard.matnr
+-------------------------------------------------
+
+SE11 -> TABELA -> SUPLEMENTOS (Extras) -> OBJETO SUBSTITUTO (Replacement Object)
